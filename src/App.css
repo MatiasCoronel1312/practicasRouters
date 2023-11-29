@@ -26,3 +26,40 @@
 .footer {
   background-color: aquamarine;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  
+}  
+
+.modal {
+  background-color: rgb(0,0,0,0.75);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: none; 
+  justify-content: center;
+  align-items: center;
+}
+.isOpen {
+  display: flex;
+}
+.modalContainer {
+  position: relative;
+  background-color: rgb(212, 212, 212);
+  border-radius: 5px; 
+  min-width: 360px;
+  max-width: 480px;
+  min-height: 600px;
+  max-height: 800px;
+  overflow-y: auto;
+}
+.modalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
