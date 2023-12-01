@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
+import { useForm } from './useForm';
+
+const initialForm = {
+    nombre: "",
+    email: "",
+    password:"",
+    captcha: false,
+};
+
+const validationsForm = (form) => {
+
+}  
 
 const Formulario = () => {
 
-    const [nombre, setNombre] = useState("");
-    const [apellido, setApellido] = useState("");
-    const [email, setEmail] = useState("");
-    const [captcha, setCaptcha] = useState(false);
-
-    const handleSubmit = e => {
-        e.preventDefault();
-    }
+    const {
+        form,
+        error,
+        loading,
+        response,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+    } = useForm(initialForm, validationsForm);
 
     return (             
                 <form className='form' onSubmit={handleSubmit}>
@@ -19,34 +32,42 @@ const Formulario = () => {
                         type='text'
                         id='nombre'
                         name='nombre'
-                        value={nombre}
-                        onChange={(e) => setNombre(e.target.value)}
+                        value={form.nombre}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        required
                     />
-                    <label htmlFor='apellido'>Apellido</label>
-                    <input
-                        type='text'
-                        id='apellido'
-                        name='apellido'
-                        value={apellido}
-                        onChange={(e) => setApellido(e.target.value)}
-                    />
+                    
                     <label htmlFor='email'>Email</label>
                     <input
                         type='email'
                         id='email'
                         name='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={form.email}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        required
+                    />
+                    <label htmlFor='password'>Contraseña</label>
+                    <input
+                        type='password'
+                        id='password'
+                        name='password'
+                        value={form.password}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        required
                     />
                     <label htmlFor='captcha'>No soy un robot</label>
                     <input 
                         type="checkbox"
                         id='captcha'
                         name='captcha'
-                        value={captcha}
-                        onChange={(e)=> setCaptcha(e.target.value)} 
+                        value={form.captcha}
+                        onChange={handleChange} 
+                        required
                     />
-                    <input type="submit" />
+                    <input type="submit" value="Ingresar" />
                 </form>
             
     )
